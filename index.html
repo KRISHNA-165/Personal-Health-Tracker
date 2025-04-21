@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Health Coach</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Personal Health Coach</h1>
+                <nav>
+                    <button id="dashboardBtn" class="active">Dashboard</button>
+                    <button id="sleepBtn">Sleep</button>
+                    <button id="hydrationBtn">Hydration</button>
+                    <button id="exerciseBtn">Exercise</button>
+                    <button id="foodBtn">Food & Nutrition</button>
+                    <button id="suggestionsBtn">Suggestions</button>
+                    <button id="notesBtn">Notes</button>
+                    <button id="profileBtn">Profile</button>
+                </nav>
+            </div>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </header>
+
+        <main>
+            <section id="dashboard" class="active-section">
+                <h2>Today's Overview</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <i class="fas fa-bed"></i>
+                        <h3>Sleep</h3>
+                        <p class="stat-value">0 hours</p>
+                        <p class="stat-goal">Goal: 8 hours</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-tint"></i>
+                        <h3>Water</h3>
+                        <p class="stat-value">0 glasses</p>
+                        <p class="stat-goal">Goal: 8 glasses</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-running"></i>
+                        <h3>Exercise</h3>
+                        <p class="stat-value">0 minutes</p>
+                        <p class="stat-goal">Goal: 30 minutes</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Calories</h3>
+                        <p class="stat-value">0 kcal</p>
+                        <p class="stat-goal">Goal: 2000 kcal</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sleep">
+                <h2>Sleep Tracker</h2>
+                <div class="tracker-form">
+                    <div class="form-group">
+                        <label for="sleepHours">Hours Slept</label>
+                        <input type="number" id="sleepHours" min="0" max="24" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="sleepQuality">Sleep Quality</label>
+                        <select id="sleepQuality">
+                            <option value="5">Excellent</option>
+                            <option value="4">Good</option>
+                            <option value="3">Average</option>
+                            <option value="2">Poor</option>
+                            <option value="1">Very Poor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sleepDate">Date</label>
+                        <input type="date" id="sleepDate" required>
+                    </div>
+                    <button id="saveSleep">Save Sleep Data</button>
+                </div>
+                <div class="history-container">
+                    <h3>Weekly Sleep History</h3>
+                    <div class="week-navigation">
+                        <button id="prevSleepWeek">&lt; Previous Week</button>
+                        <span id="currentSleepWeekRange"></span>
+                        <button id="nextSleepWeek">Next Week &gt;</button>
+                    </div>
+                    <div id="weeklySleepHistory"></div>
+                </div>
+            </section>
+
+            <section id="hydration">
+                <h2>Hydration Tracker</h2>
+                <div class="tracker-form">
+                    <div class="form-group">
+                        <label for="waterGlasses">Glasses of Water</label>
+                        <input type="number" id="waterGlasses" min="0" max="20">
+                    </div>
+                    <div class="form-group">
+                        <label for="hydrationDate">Date</label>
+                        <input type="date" id="hydrationDate" required>
+                    </div>
+                    <button id="saveHydration">Save Hydration Data</button>
+                </div>
+                <div class="history-container">
+                    <h3>Weekly Hydration History</h3>
+                    <div class="week-navigation">
+                        <button id="prevHydrationWeek">&lt; Previous Week</button>
+                        <span id="currentHydrationWeekRange"></span>
+                        <button id="nextHydrationWeek">Next Week &gt;</button>
+                    </div>
+                    <div id="weeklyHydrationHistory"></div>
+                </div>
+            </section>
+
+            <section id="exercise">
+                <h2>Exercise Tracker</h2>
+                <div class="tracker-form">
+                    <div class="form-group">
+                        <label for="exerciseType">Exercise Type</label>
+                        <select id="exerciseType">
+                            <option value="walking">Walking</option>
+                            <option value="running">Running</option>
+                            <option value="cycling">Cycling</option>
+                            <option value="swimming">Swimming</option>
+                            <option value="gym">Gym</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseDuration">Duration (minutes)</label>
+                        <input type="number" id="exerciseDuration" min="0" max="240">
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseIntensity">Intensity</label>
+                        <select id="exerciseIntensity">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseDate">Date</label>
+                        <input type="date" id="exerciseDate" required>
+                    </div>
+                    <button id="saveExercise">Save Exercise Data</button>
+                </div>
+                <div class="history-container">
+                    <h3>Weekly Exercise History</h3>
+                    <div class="week-navigation">
+                        <button id="prevExerciseWeek">&lt; Previous Week</button>
+                        <span id="currentExerciseWeekRange"></span>
+                        <button id="nextExerciseWeek">Next Week &gt;</button>
+                    </div>
+                    <div id="weeklyExerciseHistory"></div>
+                </div>
+            </section>
+
+            <section id="food">
+                <h2>Food & Nutrition Tracker</h2>
+                <div class="tracker-form">
+                    <div class="form-group">
+                        <label for="foodName">Food Item</label>
+                        <input type="text" id="foodName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="calories">Calories</label>
+                        <input type="number" id="calories" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mealType">Meal Type</label>
+                        <select id="mealType">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="entryDate">Date</label>
+                        <input type="date" id="entryDate" required>
+                    </div>
+                    <button id="saveFood">Save Food Entry</button>
+                </div>
+
+                <div class="notes-section">
+                    <h3>Add Notes & Reminders</h3>
+                    <div class="form-group">
+                        <label for="noteText">Note</label>
+                        <textarea id="noteText" rows="3" placeholder="Enter your note here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteDate">Reminder Date</label>
+                        <input type="date" id="noteDate" required>
+                    </div>
+                    <button id="saveNote">Save Note</button>
+                </div>
+
+                <div class="history-container">
+                    <h3>Weekly Food Intake</h3>
+                    <div class="week-navigation">
+                        <button id="prevWeek">&lt; Previous Week</button>
+                        <span id="currentWeekRange"></span>
+                        <button id="nextWeek">Next Week &gt;</button>
+                    </div>
+                    <div id="weeklyFoodHistory"></div>
+                </div>
+
+                <div class="suggestions-container">
+                    <h3>Weekly Suggestions</h3>
+                    <div id="weeklySuggestions"></div>
+                </div>
+            </section>
+
+            <section id="suggestions">
+                <h2>Personalized Suggestions</h2>
+                <div class="suggestions-container">
+                    <div class="suggestion-category">
+                        <h3>Health & Wellness</h3>
+                        <div id="healthSuggestions"></div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h3>Nutrition & Diet</h3>
+                        <div id="nutritionSuggestions"></div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h3>Exercise & Activity</h3>
+                        <div id="exerciseSuggestions"></div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h3>Sleep & Recovery</h3>
+                        <div id="sleepSuggestions"></div>
+                    </div>
+                    <div class="suggestion-category">
+                        <h3>Hydration</h3>
+                        <div id="hydrationSuggestions"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="notes">
+                <h2>Personal Notes</h2>
+                <div class="notes-container">
+                    <div class="notes-form">
+                        <div class="form-group">
+                            <label for="noteTitle">Title</label>
+                            <input type="text" id="noteTitle" placeholder="Enter note title">
+                        </div>
+                        <div class="form-group">
+                            <label for="noteContent">Content</label>
+                            <textarea id="noteContent" rows="5" placeholder="Write your note here..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="noteCategory">Category</label>
+                            <select id="noteCategory">
+                                <option value="general">General</option>
+                                <option value="health">Health</option>
+                                <option value="fitness">Fitness</option>
+                                <option value="diet">Diet</option>
+                                <option value="goals">Goals</option>
+                                <option value="reminders">Reminders</option>
+                            </select>
+                        </div>
+                        <button id="saveNote">Save Note</button>
+                    </div>
+                    <div class="notes-list">
+                        <div class="notes-filter">
+                            <select id="filterCategory">
+                                <option value="all">All Categories</option>
+                                <option value="general">General</option>
+                                <option value="health">Health</option>
+                                <option value="fitness">Fitness</option>
+                                <option value="diet">Diet</option>
+                                <option value="goals">Goals</option>
+                                <option value="reminders">Reminders</option>
+                            </select>
+                            <input type="text" id="searchNotes" placeholder="Search notes...">
+                        </div>
+                        <div id="notesList"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="profile">
+                <h2>User Profile</h2>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="userName">Name</label>
+                        <input type="text" id="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userAge">Age</label>
+                        <input type="number" id="userAge" min="1" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userGender">Gender</label>
+                        <select id="userGender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userWeight">Weight (kg)</label>
+                        <input type="number" id="userWeight" min="20" max="300" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userHeight">Height (cm)</label>
+                        <input type="number" id="userHeight" min="50" max="250" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="activityLevel">Activity Level</label>
+                        <select id="activityLevel" required>
+                            <option value="sedentary">Sedentary (little or no exercise)</option>
+                            <option value="light">Lightly active (1-3 days/week)</option>
+                            <option value="moderate">Moderately active (3-5 days/week)</option>
+                            <option value="active">Very active (6-7 days/week)</option>
+                            <option value="veryActive">Extra active (very active + physical job)</option>
+                        </select>
+                    </div>
+                    <button id="saveProfile">Save Profile</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
